@@ -1,26 +1,19 @@
 {
-  "name": "task-sync",
-  "description": "Simple Project Management App",
+  "name": "shared",
+  "description": "task-sync shared utilities",
   "version": "0.0.1",
   "type": "module",
+  "main": "dist/index.ts",
   "private": true,
   "engineStrict": true,
   "engines": {
     "node": ">=20.18.1 <21"
   },
-  "workspaces": [
-    "apps/*",
-    "packages/*"
-  ],
   "scripts": {
-    "build": "npm run build:shared",
-    "build:shared": "npm run build -w shared"
+    "build": "tsc && tsc-alias"
   },
   "dependencies": {},
-  "devDependencies": {
-    "tsc-alias": "^1.8.10",
-    "typescript": "^5.7.2"
-  },
+  "devDependencies": {},
   "author": {
     "email": "keidscode@gmail.com",
     "name": "Kemal Idris",
