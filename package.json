@@ -1,0 +1,24 @@
+{
+  "name": "task-sync",
+  "description": "Simple Project Management App",
+  "version": "0.0.1",
+  "type": "module",
+  "private": true,
+  "engineStrict": true,
+  "engines": {
+    "node": ">=20.18.1 <21"
+  },
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {},
+  "dependencies": {},
+  "devDependencies": {},
+  "author": {
+    "email": "keidscode@gmail.com",
+    "name": "Kemal Idris",
+    "url": "https://github.com/KeidsID"
+  },
+  "license": "MIT"
+}
