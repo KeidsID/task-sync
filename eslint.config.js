@@ -24,7 +24,6 @@ const languageOptions = {
   globals: {
     ...globals.es2020,
     ...globals.node,
-    // ...globals.commonjs,
     ...globals.jest,
   },
 };
