@@ -23,7 +23,14 @@
     "test": "npm run test:be",
     "test:be": "npm run test -w backend"
   },
+  "simple-git-hooks": {
+    "pre-commit": "npx lint-staged --cwd .",
+    "commit-msg": "npx @commitlint/cli --edit"
+  },
   "devDependencies": {
+    "@commitlint/cli": "^19.6.0",
+    "@commitlint/config-conventional": "^19.6.0",
+    "@commitlint/types": "^19.5.0",
     "@typescript-eslint/eslint-plugin": "^8.15.0",
     "@typescript-eslint/parser": "^8.15.0",
     "eslint": "^9.15.0",
@@ -31,7 +38,9 @@
     "eslint-plugin-perfectionist": "^4.0.3",
     "eslint-plugin-unicorn": "^56.0.1",
     "globals": "^15.12.0",
+    "lint-staged": "^15.2.10",
     "prettier": "^3.3.3",
+    "simple-git-hooks": "^2.11.1",
     "tsc-alias": "^1.8.10",
     "typescript": "^5.7.2"
   },
