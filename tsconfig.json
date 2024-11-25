@@ -1,4 +1,5 @@
 {
+  "exclude": ["node_modules", "dist", "*.config.ts", "dangerfile.ts"],
   "compilerOptions": {
     "target": "ESNext",
     "module": "NodeNext",

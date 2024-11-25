@@ -1,0 +1,15 @@
+{
+  "extends": "./tsconfig.json",
+  "exclude": [
+    "node_modules",
+    "dist",
+    "db",
+    "test",
+    "**/*test.ts",
+    "knexfile.ts"
+  ],
+  "compilerOptions": {
+    "declaration": true,
+    "sourceMap": true
+  }
+}
