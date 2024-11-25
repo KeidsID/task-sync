@@ -29,7 +29,10 @@ tasks, assign them to team members, track progress, and set deadlines.
 
 #### Backend
 
-...
+[nestjs]: https://docs.nestjs.com/
+
+- [NestJS][nestjs] -- Node.js framework with built-in
+  controller abstraction and dependency injection.
 
 ### Project Structures
 
