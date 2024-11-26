@@ -55,6 +55,8 @@ jobs:
           path: |
             node_modules
           key: pr-lint-${{ hashFiles('./package-lock.json') }}
+          restore-keys: |
+            pr-lint-
 
       - name: Install Dependencies
         if: steps.cache.outputs.cache-hit != 'true'
@@ -81,11 +83,16 @@ jobs:
           node-version-file: package.json
 
       - name: Restore Dependencies
+        id: cache
         uses: actions/cache@v3
         with:
           path: |
             node_modules
           key: pr-lint-${{ hashFiles('./package-lock.json') }}
+
+      - name: Dependencies Fallback
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: npm install
 
       - name: Lint Commits
         run: |
