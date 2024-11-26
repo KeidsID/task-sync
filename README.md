@@ -16,7 +16,7 @@ tasks, assign them to team members, track progress, and set deadlines.
 
 ### Requirements
 
-- [Node.js](https://nodejs.org/) v20.18.1 or higher.
+- [Node.js](https://nodejs.org/) v20.18.0 or higher.
 - [PostgreSQL](https://www.postgresql.org/) v15.8 or higher.
 
 ### Dependencies

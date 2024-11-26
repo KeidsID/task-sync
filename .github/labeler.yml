@@ -1,0 +1,22 @@
+root:
+  - changed-files:
+      - any-glob-to-any-file: "*"
+
+github:
+  - changed-files:
+      - any-glob-to-any-file: ".github/**/*"
+
+shared:
+  - changed-files:
+      - all-globs-to-any-file:
+          - "packages/shared/**/*"
+
+frontend:
+  - changed-files:
+      - all-globs-to-any-file:
+          - "apps/frontend/**/*"
+
+backend:
+  - changed-files:
+      - all-globs-to-any-file:
+          - "apps/backend/**/*"
