@@ -23,6 +23,7 @@ jobs:
   dependencies:
     name: Install Dependencies
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
@@ -39,12 +40,10 @@ jobs:
           path: |
             ./node_modules
           key: pr-lint-${{ hashFiles('./package-lock.json') }}
-          restore-keys: |
-            pr-lint-
 
       - name: Install Dependencies
         if: steps.cache.outputs.cache-hit != 'true'
-        run: npm i
+        run: npm install
 
   linting:
     name: PR Linting

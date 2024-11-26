@@ -6,7 +6,7 @@
   "private": true,
   "engineStrict": true,
   "engines": {
-    "node": ">=20.18.1 <21"
+    "node": ">=20.18.0 <21"
   },
   "workspaces": [
     "apps/*",
