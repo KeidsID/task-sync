@@ -1,6 +1,6 @@
 import { danger, fail, type GitHubPRDSL } from "danger";
 
-import { GitlintConfig } from "./gitlint.config.js";
+import { GitlintConfig } from "./gitlint.config";
 
 type GithubPRRef = GitHubPRDSL & {
   labels: unknown[];
