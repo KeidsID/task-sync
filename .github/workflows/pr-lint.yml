@@ -38,7 +38,7 @@ jobs:
         uses: actions/cache@v3
         with:
           path: |
-            ./node_modules
+            node_modules
           key: pr-lint-${{ hashFiles('./package-lock.json') }}
 
       - name: Install Dependencies
@@ -69,7 +69,7 @@ jobs:
         uses: actions/cache@v3
         with:
           path: |
-            ./node_modules
+            node_modules
           key: pr-lint-${{ hashFiles('./package-lock.json') }}
 
       - name: Lint Commits
