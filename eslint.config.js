@@ -4,6 +4,8 @@ import tsPlugin from "@typescript-eslint/eslint-plugin";
 import prettierConfigLib from "eslint-config-prettier";
 import perfectionist from "eslint-plugin-perfectionist";
 import unicorn from "eslint-plugin-unicorn";
+import importPlugin from "eslint-plugin-import";
+import { resolve as importPluginTsResolver } from "eslint-import-resolver-typescript";
 
 /** @typedef {import("eslint").Linter.Config} */
 let Config;
@@ -16,6 +18,7 @@ const ignores = [
   "node_modules",
   "dist/**/*.{ts,js,cjs}",
   "*.config.{ts,js,cjs}",
+  "**/*.config.{ts,js,cjs}",
   "dangerfile.ts",
 ];
 
@@ -33,7 +36,7 @@ const tsConfig = {
   files,
   ignores,
   languageOptions: {
-    ...languageOptions,
+    languageOptions,
     parser: tsParser,
     parserOptions: {
       project: "./tsconfig.json",
@@ -66,17 +69,15 @@ const tsConfig = {
 
 /** @type {Config} */
 const prettierConfig = {
-  ...prettierConfigLib,
   files,
   ignores,
-  languageOptions,
+  ...prettierConfigLib,
 };
 
 /** @type {Config} */
 const perfectionistConfig = {
   files,
   ignores,
-  languageOptions,
   plugins: { perfectionist },
   rules: {
     "perfectionist/sort-exports": ["error"],
@@ -90,7 +91,6 @@ const perfectionistConfig = {
 const unicornConfig = {
   files,
   ignores,
-  languageOptions,
   plugins: { unicorn },
   rules: {
     ...unicorn.configs["recommended"].rules,
@@ -101,7 +101,36 @@ const unicornConfig = {
   },
 };
 
+/** @type {Config} */
+const importConfig = {
+  files,
+  ignores,
+  plugins: { import: importPlugin },
+  settings: {
+    "import/parsers": {
+      espree: [".js", ".cjs"],
+    },
+    "import/resolver": {
+      typescript: importPluginTsResolver,
+    },
+  },
+  rules: {
+    ...importPlugin.configs.recommended.rules,
+    "import/exports-last": ["error"],
+    "import/extensions": ["error", { js: "always" }],
+    "import/newline-after-import": ["error"],
+    "import/no-default-export": ["error"],
+    "import/no-duplicates": ["error"],
+  },
+};
+
 /** @type {Config[]} */
-const configs = [tsConfig, prettierConfig, perfectionistConfig, unicornConfig];
+const configs = [
+  tsConfig,
+  prettierConfig,
+  perfectionistConfig,
+  unicornConfig,
+  importConfig,
+];
 
 export default configs;
