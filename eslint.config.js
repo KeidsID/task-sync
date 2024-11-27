@@ -11,7 +11,7 @@ import { resolve as importPluginTsResolver } from "eslint-import-resolver-typesc
 let Config;
 
 /** @type {Config["files"]} */
-const files = ["**/*.{ts,js,cjs}"];
+const files = ["**/*.{ts,tsx,js,cjs}"];
 
 /** @type {Config["ignores"]} */
 const ignores = [

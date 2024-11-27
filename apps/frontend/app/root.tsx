@@ -1,3 +1,5 @@
+import type { LinksFunction } from "@remix-run/node";
+
 import {
   Links,
   Meta,
@@ -5,9 +7,12 @@ import {
   Scripts,
   ScrollRestoration,
 } from "@remix-run/react";
-import type { LinksFunction } from "@remix-run/node";
 
 import "./tailwind.css";
+
+type LayoutProperties = {
+  children: React.ReactNode;
+};
 
 export const links: LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -22,7 +27,7 @@ export const links: LinksFunction = () => [
   },
 ];
 
-export function Layout({ children }: { children: React.ReactNode }) {
+export function Layout({ children }: LayoutProperties): React.JSX.Element {
   return (
     <html lang="en">
       <head>
@@ -40,10 +45,10 @@ export function Layout({ children }: { children: React.ReactNode }) {
   );
 }
 
-export default function App() {
+export default function App(): React.JSX.Element {
   return <Outlet />;
 }
 
-export function HydrateFallback() {
+export function HydrateFallback(): React.JSX.Element {
   return <p>Loading...</p>;
 }

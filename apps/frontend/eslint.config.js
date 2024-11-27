@@ -24,14 +24,6 @@ const languageOptions = {
 };
 
 /** @type {Config} */
-const mainConfig = {
-  extends: ["eslint:recommended"],
-  files: ["**/*.{ts,js,cjs}"],
-  ignores,
-  languageOptions: languageOptions,
-};
-
-/** @type {Config} */
 const reactConfig = {
   files: ["**/*.tsx"],
   languageOptions,
@@ -74,12 +66,23 @@ const jsxA11yConfig = {
 };
 
 /** @type {Config[]} */
+const overridesConfigs = [
+  {
+    files: ["app/**/*.{ts,tsx}"],
+    rules: {
+      "import/no-default-export": ["off"],
+    },
+  },
+];
+
+/** @type {Config[]} */
 const configs = [
   ...baseConfigs,
-  mainConfig,
+  { ignores },
   reactConfig,
   reactHooksConfig,
   jsxA11yConfig,
+  ...overridesConfigs,
 ];
 
 export default configs;
