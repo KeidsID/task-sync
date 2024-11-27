@@ -1,0 +1,45 @@
+{
+  "name": "frontend",
+  "description": "task-sync frontend",
+  "version": "0.0.1",
+  "type": "module",
+  "private": true,
+  "engineStrict": true,
+  "engines": {
+    "node": ">=20.18.0 <21"
+  },
+  "sideEffects": false,
+  "scripts": {
+    "build": "remix vite:build",
+    "dev": "remix vite:dev",
+    "lint": "eslint \"{app,src,test}/**/*.{ts,tsx}\"",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@remix-run/node": "^2.15.0",
+    "@remix-run/react": "^2.15.0",
+    "isbot": "^4.4.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "shared": "*"
+  },
+  "devDependencies": {
+    "@remix-run/dev": "^2.15.0",
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "autoprefixer": "^10.4.20",
+    "eslint-plugin-jsx-a11y": "^6.10.2",
+    "eslint-plugin-react": "^7.37.2",
+    "eslint-plugin-react-hooks": "^5.0.0",
+    "postcss": "^8.4.49",
+    "tailwindcss": "^3.4.15",
+    "vite": "^5.4.11",
+    "vite-tsconfig-paths": "^4.3.2"
+  },
+  "author": {
+    "email": "keidscode@gmail.com",
+    "name": "Kemal Idris",
+    "url": "https://github.com/KeidsID"
+  },
+  "license": "MIT"
+}

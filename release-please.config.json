@@ -5,10 +5,13 @@
       "release-type": "node",
       "include-component-in-tag": false
     },
+    "packages/shared": {
+      "release-type": "node"
+    },
     "apps/backend": {
       "release-type": "node"
     },
-    "packages/shared": {
+    "apps/frontend": {
       "release-type": "node"
     }
   }
