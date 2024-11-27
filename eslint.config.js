@@ -36,7 +36,7 @@ const tsConfig = {
   files,
   ignores,
   languageOptions: {
-    languageOptions,
+    ...languageOptions,
     parser: tsParser,
     parserOptions: {
       project: "./tsconfig.json",
