@@ -45,10 +45,10 @@ export function Layout({ children }: LayoutProperties): React.JSX.Element {
   );
 }
 
-export default function App(): React.JSX.Element {
-  return <Outlet />;
-}
-
 export function HydrateFallback(): React.JSX.Element {
   return <p>Loading...</p>;
+}
+
+export default function App(): React.JSX.Element {
+  return <Outlet />;
 }
