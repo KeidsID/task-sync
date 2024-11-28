@@ -13,13 +13,16 @@
     "packages/*"
   ],
   "scripts": {
-    "build": "npm run build:shared && npm run build:backend",
+    "build": "npm run build:shared && npm run build:be && npm run build:fe",
     "build:shared": "npm run build -w shared",
-    "build:backend": "npm run build -w backend",
+    "build:be": "npm run build -w backend",
+    "build:fe": "npm run build -w frontend",
     "start:be": "npm run start -w backend",
     "start:dev:be": "npm run start:dev -w backend",
-    "lint": "npm run lint:be",
+    "lint": "npm run lint:shared && npm run lint:be && npm run lint:fe",
+    "lint:shared": "npm run lint -w shared",
     "lint:be": "npm run lint -w backend",
+    "lint:fe": "npm run lint -w frontend",
     "test": "npm run test:be",
     "test:be": "npm run test -w backend"
   },
@@ -36,6 +39,8 @@
     "danger": "^12.3.3",
     "eslint": "^9.15.0",
     "eslint-config-prettier": "^9.1.0",
+    "eslint-import-resolver-typescript": "^3.6.3",
+    "eslint-plugin-import": "^2.31.0",
     "eslint-plugin-perfectionist": "^4.0.3",
     "eslint-plugin-unicorn": "^56.0.1",
     "globals": "^15.12.0",

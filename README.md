@@ -8,8 +8,8 @@ tasks, assign them to team members, track progress, and set deadlines.
 - [Developer Section](#developer-section)
   - [Requirements](#requirements)
   - [Dependencies](#dependencies)
-  - [Project Structures](#project-structures)
-  - [How To Run](#how-to-run)
+  - [Folder Structures](#folder-structures)
+  - [Setup](#setup)
   - [Git Conventions](#git-conventions)
 
 ## Developer Section
@@ -21,11 +21,15 @@ tasks, assign them to team members, track progress, and set deadlines.
 
 ### Dependencies
 
-3rd-party dependencies that you need to know before working on this project.
+Main dependencies that build this project.
 
 #### Frontend
 
-...
+[remixjs]: https://remix.run/docs
+
+- [RemixJS][remixjs] -- React routing framework
+
+Visit frontend [README.md](apps/frontend/README.md) for more information.
 
 #### Backend
 
@@ -34,13 +38,50 @@ tasks, assign them to team members, track progress, and set deadlines.
 - [NestJS][nestjs] -- Node.js framework with built-in
   controller abstraction and dependency injection.
 
-### Project Structures
+Visit backend [README.md](apps/backend/README.md) for more information.
 
-...
+### Folder Structures
 
-### How To Run
+#### Main Directories
 
-...
+[shared-dir]: packages/shared/package.json
+[be-dir]: apps/backend/package.json
+[fe-dir]: apps/frontend/package.json
+
+- [`packages/shared`][shared-dir] -- shared utilities used by apps.
+- [`apps/backend`][be-dir] -- backend directory
+- [`apps/frontend`][fe-dir] -- frontend directory
+
+#### Folder Structure
+
+[clean-arch]: https://www.geeksforgeeks.org/complete-guide-to-clean-architecture/
+
+This project is follow the [Clean Architecture][clean-arch] principles.
+
+- `src/` -- source code
+  - `domain/` -- domain layer (entities and services abstractions)
+  - `infrastructures/` -- infrastructure layer (services implementations)
+  - `use_cases/` -- application logic layer
+  - `interfaces/` -- interfaces layer (routes, states, etc)
+  - `libs/` -- contain constants, enums, utilities, etc.
+
+### Setup
+
+#### Environment Setup
+
+On the project **root directory**, run the following commands.
+
+1. Install dependencies
+
+   ```sh
+   npm install
+   ```
+
+2. Inittialize git hooks
+
+   ```sh
+   npx simple-git-hooks
+   ```
 
 ### Git Conventions
 

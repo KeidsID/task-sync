@@ -1,6 +1,6 @@
-# Task Sync - Backend
+# Task Sync - Frontend
 
-This is the backend for the Task Sync app.
+This is the frontend web for the Task Sync app.
 
 ## Table Of Contents
 
@@ -13,12 +13,11 @@ This is the backend for the Task Sync app.
 ### Requirements
 
 - [Node.js](https://nodejs.org/) v20.18.0 or higher.
-- [PostgreSQL](https://www.postgresql.org/) v15.8 or higher.
 
 ### Dependencies
 
-Packages that build this backend.
+Packages that build this frontend.
 
-[nestjs]: https://docs.nestjs.com/
+[remixjs]: https://remix.run/docs
 
-- [NestJS][nestjs] -- Node.js framework.
+- [RemixJS][remixjs] -- React routing framework
