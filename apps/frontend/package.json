@@ -12,7 +12,7 @@
   "scripts": {
     "build": "remix vite:build",
     "dev": "remix vite:dev",
-    "lint": "eslint \"{app,src,test}/**/*.{ts,tsx}\"",
+    "lint": "eslint \"{app,src}/**/*.{ts,tsx}\"",
     "preview": "vite preview"
   },
   "dependencies": {
