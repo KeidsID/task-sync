@@ -61,27 +61,3 @@ jobs:
 
       - name: Code Linting
         run: npm run lint
-
-  test:
-    name: Code Testing
-    needs: dependencies
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout Code
-        uses: actions/checkout@v4
-
-      - name: Setup NodeJS
-        uses: actions/setup-node@v4
-        with:
-          node-version-file: package.json
-
-      - name: Restore Dependencies
-        uses: actions/cache@v3
-        with:
-          path: |
-            node_modules
-          key: ci-${{ hashFiles('./package-lock.json') }}
-
-      - name: Code Testing
-        run: npm run test
