@@ -12,6 +12,7 @@ type PRLintConfig = {
   TITLE: { PATTERN: RegExp | null };
   ASSIGNEES: { IS_REQUIRED: boolean };
   LABELS: { IS_REQUIRED: boolean };
+  MILESTONE: { IS_REQUIRED: boolean };
 };
 
 const pr = danger.github.pr as GithubPRRef;
@@ -33,14 +34,13 @@ const config: PRLintConfig = {
   },
   ASSIGNEES: { IS_REQUIRED: true },
   LABELS: { IS_REQUIRED: true },
+  MILESTONE: { IS_REQUIRED: true },
 };
 
 const bootstrap = (): void => {
   const {
     BRANCH: { PATTERN: branchPattern },
     TITLE: { PATTERN: titlePattern },
-    ASSIGNEES: { IS_REQUIRED: isAssigneesRequired },
-    LABELS: { IS_REQUIRED: isLabelsRequired },
   } = config;
 
   if (branchPattern) {
@@ -67,7 +67,7 @@ const bootstrap = (): void => {
     }
   }
 
-  if (isAssigneesRequired) {
+  if (config.ASSIGNEES.IS_REQUIRED) {
     const hasAssignees = Boolean(pr.assignee);
 
     if (!hasAssignees) {
@@ -75,11 +75,19 @@ const bootstrap = (): void => {
     }
   }
 
-  if (isLabelsRequired) {
+  if (config.LABELS.IS_REQUIRED) {
     const hasLabels = pr.labels.length > 0;
 
     if (!hasLabels) {
       fail("This pull request should have at least one label.");
+    }
+  }
+  
+  if (config.MILESTONE.IS_REQUIRED) {
+    const hasMilestone = Boolean(pr.milestone);
+
+    if (!hasMilestone) {
+      fail("This pull request should have a milestone.");
     }
   }
 };
