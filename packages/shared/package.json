@@ -3,18 +3,19 @@
   "description": "task-sync shared utilities",
   "version": "0.1.0",
   "type": "module",
-  "main": "dist/index.ts",
+  "main": "build/index.js",
   "private": true,
   "engineStrict": true,
   "engines": {
     "node": ">=20.18.1 <21"
   },
   "scripts": {
-    "build": "tsc && tsc-alias",
+    "build": "del build && tsc && tsc-alias",
     "lint": "eslint src"
   },
-  "dependencies": {},
-  "devDependencies": {},
+  "devDependencies": {
+    "del-cli": "^6.0.0"
+  },
   "author": {
     "email": "keidscode@gmail.com",
     "name": "Kemal Idris",
