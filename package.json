@@ -18,7 +18,7 @@
     "build:be": "npm run build -w backend",
     "build:fe": "npm run build -w frontend",
     "start:be": "npm run start -w backend",
-    "start:dev:be": "npm run start:dev -w backend",
+    "start:be-dev": "npm run start:dev -w backend",
     "lint": "npm run lint:shared && npm run lint:be && npm run lint:fe",
     "lint:shared": "npm run lint -w shared",
     "lint:be": "npm run lint -w backend",
