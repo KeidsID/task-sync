@@ -1,4 +1,4 @@
-import type { UseCase } from "~/use_cases/use_case.js";
+import type { UseCase } from "~/use_cases/libs/types/index.js";
 
 import type { SignUpRequestDto, SignUpResponseDto } from "./libs/dtos/index.js";
 

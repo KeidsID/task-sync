@@ -1,1 +1,1 @@
-export type * from "./auth/index.js";
+export type * from "./modules/index.js";
