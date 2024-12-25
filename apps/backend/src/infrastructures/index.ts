@@ -1,4 +1,9 @@
 import { Module } from "@nestjs/common";
+import {
+  JwtModule,
+  type JwtModuleOptions,
+  type JwtSignOptions,
+} from "@nestjs/jwt";
 
 import { UsersRepository } from "~/domain/repositories/index.js";
 import {
@@ -17,6 +22,27 @@ import {
 } from "./services/index.js";
 
 @Module({
+  imports: [
+    JwtModule.registerAsync({
+      inject: [ConfigService],
+      useFactory(configService: ConfigService) {
+        const { SECRET, EXPIRES_IN } = configService.ENV.JWT;
+        const algorithm: JwtSignOptions["algorithm"] = "HS256";
+
+        const moduleOptions: JwtModuleOptions = {
+          secret: SECRET,
+          signOptions: {
+            algorithm,
+            expiresIn: EXPIRES_IN,
+          },
+          verifyOptions: {
+            algorithms: [algorithm],
+          },
+        };
+        return moduleOptions;
+      },
+    }),
+  ],
   providers: [
     { provide: UserModel, useValue: UserModel },
     { provide: UsersRepository, useClass: UsersRepositoryImpl },
@@ -32,6 +58,8 @@ import {
     LoggerService,
     ConfigService,
     EncryptionService,
+    //
+    JwtModule,
   ],
 })
 export class InfrastructuresModule {}
