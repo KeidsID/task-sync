@@ -16,7 +16,7 @@ const files = ["**/*.{ts,tsx,js,cjs}"];
 /** @type {Config["ignores"]} */
 const ignores = [
   "node_modules",
-  "dist/**/*.{ts,js,cjs}",
+  "build/**/*.{ts,js,cjs}",
   "*.config.{ts,js,cjs}",
   "**/*.config.{ts,js,cjs}",
   "dangerfile.ts",
