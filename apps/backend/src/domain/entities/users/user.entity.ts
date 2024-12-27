@@ -10,12 +10,15 @@ import {
 
 export class User implements UserType {
   @IsString()
+  @ApiProperty()
   id!: string;
 
   @IsDate()
+  @ApiProperty()
   createdAt!: Date;
 
   @IsDate()
+  @ApiProperty()
   updatedAt!: Date;
 
   @IsEmail()

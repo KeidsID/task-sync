@@ -24,6 +24,7 @@ import {
 @Module({
   imports: [
     JwtModule.registerAsync({
+      imports: [InfrastructuresModule],
       inject: [ConfigService],
       useFactory(configService: ConfigService) {
         const { SECRET, EXPIRES_IN } = configService.ENV.JWT;

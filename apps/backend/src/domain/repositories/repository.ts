@@ -1,4 +1,4 @@
-import { type Entity } from "../entities/index.js";
+import { type Entity } from "shared";
 
 interface Repository<T extends Entity> {
   create(newData: Omit<T, keyof Entity>): Promise<T>;
