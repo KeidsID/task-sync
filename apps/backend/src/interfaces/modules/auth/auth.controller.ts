@@ -1,11 +1,15 @@
-import { Body, Post } from "@nestjs/common";
+import { Body, Get, Post, Req } from "@nestjs/common";
+import { type Request } from "express";
 
 import {
   ApiDocumentation,
   ControllerWithTags,
+  UseAuthGuard,
 } from "~/interfaces/libs/decorators/index.js";
 import { ApiPath, HttpStatus } from "~/interfaces/libs/enums/index.js";
 import {
+  GetUserByIdResponseDto,
+  GetUserByIdUseCase,
   SignInRequestDto,
   SignInResponseDto,
   SignInUseCase,
@@ -19,8 +23,9 @@ import { AuthApiPath } from "./libs/enums/index.js";
 @ControllerWithTags(ApiPath.AUTH)
 export class AuthController {
   constructor(
-    private _signInUseCase: SignInUseCase,
-    private _signUpUseCase: SignUpUseCase
+    private readonly _signInUseCase: SignInUseCase,
+    private readonly _signUpUseCase: SignUpUseCase,
+    private readonly _getUserByIdUseCase: GetUserByIdUseCase
   ) {}
 
   @Post(AuthApiPath.SIGN_IN)
@@ -45,5 +50,18 @@ export class AuthController {
     @Body() requestDto: SignUpRequestDto
   ): Promise<SignUpResponseDto> {
     return await this._signUpUseCase.execute(requestDto);
+  }
+
+  @Get(AuthApiPath.ROOT)
+  @UseAuthGuard()
+  @ApiDocumentation({
+    summary: "Get user details from auth token",
+    request: {},
+    response: { status: HttpStatus.OK, type: GetUserByIdResponseDto },
+  })
+  async getAuth(@Req() request: Request): Promise<GetUserByIdResponseDto> {
+    const userId = request.userId!;
+
+    return await this._getUserByIdUseCase.execute(userId);
   }
 }

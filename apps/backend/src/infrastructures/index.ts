@@ -24,6 +24,7 @@ import {
 @Module({
   imports: [
     JwtModule.registerAsync({
+      global: true,
       imports: [InfrastructuresModule],
       inject: [ConfigService],
       useFactory(configService: ConfigService) {

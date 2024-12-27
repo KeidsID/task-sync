@@ -8,6 +8,7 @@
     "paths": {
       "~/*": ["src/*"],
       "~test/*": ["test/*"]
-    }
+    },
+    "types": ["./src/main.d.ts"]
   }
 }
