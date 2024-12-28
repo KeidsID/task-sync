@@ -34,7 +34,7 @@ export class AuthController {
   @ApiDocumentation({
     summary: "Authenticate with email and password",
     request: { body: { type: SignInRequestDto } },
-    response: { status: HttpStatus.OK, type: SignInResponseDto },
+    response: { status: HttpStatus.CREATED, type: SignInResponseDto },
   })
   @ValidationErrorApiResponse()
   @CommonErrorApiResponse(HttpStatus.UNAUTHORIZED, "Invalid credentials")
