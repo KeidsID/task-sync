@@ -3,8 +3,10 @@ import { type Request } from "express";
 
 import {
   ApiDocumentation,
+  CommonErrorApiResponse,
   ControllerWithTags,
   UseAuthGuard,
+  ValidationErrorApiResponse,
 } from "~/interfaces/libs/decorators/index.js";
 import { ApiPath, HttpStatus } from "~/interfaces/libs/enums/index.js";
 import {
@@ -34,6 +36,8 @@ export class AuthController {
     request: { body: { type: SignInRequestDto } },
     response: { status: HttpStatus.OK, type: SignInResponseDto },
   })
+  @ValidationErrorApiResponse()
+  @CommonErrorApiResponse(HttpStatus.UNAUTHORIZED, "Invalid credentials")
   async signIn(
     @Body() requestDto: SignInRequestDto
   ): Promise<SignInResponseDto> {
@@ -46,6 +50,8 @@ export class AuthController {
     request: { body: { type: SignUpRequestDto } },
     response: { status: HttpStatus.CREATED, type: SignUpResponseDto },
   })
+  @ValidationErrorApiResponse()
+  @CommonErrorApiResponse(HttpStatus.UNPROCESSABLE_ENTITY, "Email already used")
   async signUp(
     @Body() requestDto: SignUpRequestDto
   ): Promise<SignUpResponseDto> {
@@ -59,6 +65,7 @@ export class AuthController {
     request: {},
     response: { status: HttpStatus.OK, type: GetUserByIdResponseDto },
   })
+  @CommonErrorApiResponse(HttpStatus.UNAUTHORIZED, "User not found")
   async getAuth(@Req() request: Request): Promise<GetUserByIdResponseDto> {
     const userId = request.userId!;
 

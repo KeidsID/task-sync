@@ -1,4 +1,4 @@
-import { Injectable, NotFoundException } from "@nestjs/common";
+import { Injectable, UnauthorizedException } from "@nestjs/common";
 import { type UseCase } from "shared";
 
 import { UsersRepository } from "~/domain/repositories/index.js";
@@ -13,7 +13,9 @@ export class GetUserByIdUseCase implements UseCase<GetUserByIdResponseDto> {
     const user = await this._usersRepository.read({ id });
 
     if (!user) {
-      throw new NotFoundException("User not found, it may have been deleted");
+      throw new UnauthorizedException(
+        "User not found, it may have been deleted"
+      );
     }
 
     return {
