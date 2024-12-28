@@ -2,7 +2,7 @@ import { BadRequestException, ValidationPipe } from "@nestjs/common";
 import { NestFactory } from "@nestjs/core";
 import { DocumentBuilder, SwaggerModule } from "@nestjs/swagger";
 
-import { AppPath } from "~/interfaces/libs/enums/index.js";
+import { ApiPath, AppPath } from "~/interfaces/libs/enums/index.js";
 import { CommonNumber } from "~/libs/enums/index.js";
 
 import { AppModule } from "./app.module.js";
@@ -36,6 +36,7 @@ async function bootstrap(): Promise<void> {
         .setVersion("v1")
         .addServer(AppPath.API)
         .addBearerAuth()
+        .addTag(ApiPath.AUTH, "Endpoints related to authentication")
         .build(),
       { ignoreGlobalPrefix: true }
     );
