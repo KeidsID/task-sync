@@ -30,13 +30,16 @@ jobs:
         with:
           path: |
             node_modules
+            packages/shared/build
           key: ci-${{ hashFiles('./package-lock.json') }}
           restore-keys: |
             ci-
 
       - name: Install Dependencies
         if: steps.cache.outputs.cache-hit != 'true'
-        run: npm install
+        run: |
+          npm install
+          npm run build:shared
 
   lint:
     name: Code Linting
@@ -53,11 +56,19 @@ jobs:
           node-version-file: package.json
 
       - name: Restore Dependencies
+        id: restore-deps
         uses: actions/cache@v3
         with:
           path: |
             node_modules
+            packages/shared/build
           key: ci-${{ hashFiles('./package-lock.json') }}
+
+      - name: Dependencies Fallback
+        if: steps.restore-deps.outputs.cache-hit != 'true'
+        run: |
+          npm install
+          npm run build:shared
 
       - name: Code Linting
         run: npm run lint
