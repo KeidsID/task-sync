@@ -21,6 +21,9 @@ tasks, assign them to team members, track progress, and set deadlines.
 
 ### Dependencies
 
+[fe-md]: apps/frontend/README.md
+[be-md]: apps/backend/README.md
+
 Main dependencies that build this project.
 
 #### Frontend
@@ -29,7 +32,7 @@ Main dependencies that build this project.
 
 - [RemixJS][remixjs] -- React routing framework
 
-Visit frontend [README.md](apps/frontend/README.md) for more information.
+Visit frontend [README.md][fe-md] for more information.
 
 #### Backend
 
@@ -38,19 +41,17 @@ Visit frontend [README.md](apps/frontend/README.md) for more information.
 - [NestJS][nestjs] -- Node.js framework with built-in
   controller abstraction and dependency injection.
 
-Visit backend [README.md](apps/backend/README.md) for more information.
+Visit backend [README.md][be-md] for more information.
 
 ### Folder Structures
 
 #### Main Directories
 
-[shared-dir]: packages/shared/package.json
-[be-dir]: apps/backend/package.json
-[fe-dir]: apps/frontend/package.json
+[shared-deps]: packages/shared/package.json
 
-- [`packages/shared`][shared-dir] -- shared utilities used by apps.
-- [`apps/backend`][be-dir] -- backend directory
-- [`apps/frontend`][fe-dir] -- frontend directory
+- [`packages/shared`][shared-deps] -- shared utilities used by apps.
+- [`apps/backend`][be-md] -- backend directory
+- [`apps/frontend`][fe-md] -- frontend directory
 
 #### Folder Structure
 
@@ -63,7 +64,9 @@ This project is follow the [Clean Architecture][clean-arch] principles.
   - `infrastructures/` -- infrastructure layer (services implementations)
   - `use_cases/` -- application logic layer
   - `interfaces/` -- interfaces layer (routes, states, etc)
-  - `libs/` -- contain constants, enums, utilities, etc.
+
+- `**/libs/` -- contain constants, enums, or other utilities for that
+  directory.
 
 ### Setup
 
@@ -77,11 +80,34 @@ On the project **root directory**, run the following commands.
    npm install
    ```
 
-2. Inittialize git hooks
+2. Initialize git hooks
 
    ```sh
    npx simple-git-hooks
    ```
+
+3. Build shared package. Do this everytime you make changes on
+   [shared][shared-deps] package.
+
+   ```sh
+   npm run build:shared
+   ```
+
+4. Setup `.env` file on each apps. Use `.env.example` as environment values
+   reference.
+
+   - [apps/backend/.env.example](apps/backend/.env.example)
+
+5. Now you can run the app.
+
+   ```sh
+   # intial backend run
+   npm run migrate -w backend
+   npm run start:be
+   ```
+
+Check each [frontend][fe-md] and [backend][be-md]
+README.md for more setup/run command.
 
 ### Git Conventions
 
